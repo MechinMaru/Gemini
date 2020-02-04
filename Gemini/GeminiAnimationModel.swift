@@ -197,6 +197,10 @@ final class GeminiAnimationModel {
                 return CATransform3DRotate(transform3DIdentity, degree * .pi / 180, 1, 0, 0)
             case .horizontal:
                 degree = easingRatio * -toDegree
+                let absDegree = abs(degree)
+                if absDegree < 2 || absDegree > 88 {
+                    return CATransform3DIdentity
+                }
                 return CATransform3DRotate(transform3DIdentity, degree * .pi / 180, 0, 1, 0)
             }
 
